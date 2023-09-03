@@ -1,4 +1,5 @@
 #include <iostream>
+#include <ctime>
 using namespace std;
 
 int playerChoice() {
@@ -34,14 +35,16 @@ string npcChoice_as_Str(int RPC_as_Num) {
 }
 
 void mainGame() {
+
     int NPC = npcChoice();
     int playerChoose = playerChoice();
 
     cout << "NPC choose: " << npcChoice_as_Str(NPC) << endl;
+    cout << "Player choose: " << npcChoice_as_Str(playerChoose) << endl;
 
     if (checkDraw(playerChoose, NPC)) {
         cout << "Result: Draw";
-    } else if (playerWin(playerChoose, NPC)) {
+    } else if (!playerWin(playerChoose, NPC)) {
         cout << "Result: Player Win";
     } else {
         cout << "Result: NPC Win";
